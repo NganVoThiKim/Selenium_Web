@@ -1,2 +1,7 @@
-package models.components;public class HeaderComponent {
+package models.components;
+
+public class HeaderComponent {
+    // SELECTORS
+
+    // METHODS
 }

@@ -1,18 +1,16 @@
 package models.tests;
 import driver.DriverFactory;
-import models.pages.LoginPageModel03;
+import models.pages.BasePage;
+import models.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 
-public class POModel03Tests {
+public class POModel04Tests {
     public static void main(String[] args) {
         WebDriver driver = DriverFactory.getWebDriver();
         try {
             driver.get("https://demowebshop.tricentis.com/login");
-            LoginPageModel03 loginPage = new LoginPageModel03(driver);
-            loginPage.inputUsername("nganvothikim270496@gmail.com")
-                    .inputPassword("1234567890aA@")
-                    .checkOnRememberCheckbox()
-                    .clickOnLoginBtn();
+            HomePage homePage = new HomePage(driver);
+            //homePage.footerComp().doSth();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
