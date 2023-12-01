@@ -1,4 +1,4 @@
-package models.tests;
+package tests;
 import driver.DriverFactory;
 import models.pages.BasePage;
 import models.pages.HomePage;

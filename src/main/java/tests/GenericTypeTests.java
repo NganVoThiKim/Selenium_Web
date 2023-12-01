@@ -1,4 +1,4 @@
-package models.tests;
+package tests;
 
 import models.components.ComponentExploring;
 import models.pages.ExternalLoginPage;

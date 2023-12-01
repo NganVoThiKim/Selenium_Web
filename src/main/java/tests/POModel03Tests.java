@@ -1,4 +1,4 @@
-package models.tests;
+package tests;
 import driver.DriverFactory;
 import models.pages.LoginPageModel03;
 import org.openqa.selenium.WebDriver;

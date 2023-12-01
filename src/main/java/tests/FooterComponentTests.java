@@ -1,4 +1,4 @@
-package models.tests;
+package tests;
 
 import driver.DriverFactory;
 import models.components.global.footer.FooterColumnComponent;
@@ -14,9 +14,16 @@ public class FooterComponentTests {
         try {
             HomePage homePage = new HomePage(driver);
             FooterComponent footerComp = homePage.footerComp();
-            FooterColumnComponent footerColumnComp = footerComp.informationColumnComp();
-            testFooterComp(footerColumnComp);
-        }catch (Exception ignored){
+            FooterColumnComponent informationColumnComp = footerComp.informationColumnComp();
+            FooterColumnComponent customerServiceColumnComp = footerComp.customerServiceColumnComp();
+            FooterColumnComponent myAccountColumnComp = footerComp.myAccountColumnComp();
+            FooterColumnComponent followUsColumnComp = footerComp.followUsColumnComp();
+            testFooterComp(informationColumnComp);
+            testFooterComp(customerServiceColumnComp);
+            testFooterComp(myAccountColumnComp);
+            testFooterComp(followUsColumnComp);
+        }catch (Exception e){
+            String err = e.getMessage();
 
         }finally {
             driver.quit();
