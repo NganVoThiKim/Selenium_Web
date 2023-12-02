@@ -1,4 +1,4 @@
-package tests.global.footer;
+package tests.testng;
 
 import org.testng.annotations.Test;
 
