@@ -24,6 +24,12 @@ public class Component {
     }
 
     // Narrowdown Searching Scope
+    public WebElement getComponent(){
+        return this.component;
+    }
+    public WebDriverWait waitComponent(){
+        return this.wait;
+    }
     public WebElement findElement(By by){
         return this.component.findElement(by);
     }

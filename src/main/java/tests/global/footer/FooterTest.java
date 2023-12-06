@@ -26,4 +26,10 @@ public class FooterTest extends BaseTest {
         //Assert.fail("I want to");
         footerTestFlow.verifyFooterComponent();
     }
+    @Test
+    public void testMenuCategoryFooter(){
+        driver.get("https://demowebshop.tricentis.com/");
+        FooterTestFlow menuCategoryFooterTestFlow= new FooterTestFlow(driver);
+        menuCategoryFooterTestFlow.verifyRandomMenuFooterComponent();
+    }
 }

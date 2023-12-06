@@ -22,14 +22,15 @@ public class FooterComponentTests {
             testFooterComp(customerServiceColumnComp);
             testFooterComp(myAccountColumnComp);
             testFooterComp(followUsColumnComp);
-        }catch (Exception e){
+        } catch (Exception e) {
             String err = e.getMessage();
 
-        }finally {
+        } finally {
             driver.quit();
         }
     }
-    private static void testFooterComp(FooterColumnComponent footerColumnComp){
+
+    private static void testFooterComp(FooterColumnComponent footerColumnComp) {
         System.out.println(footerColumnComp.headerEle().getText());
         for (WebElement linkEle : footerColumnComp.linksEle()) {
             System.out.println(linkEle.getText() + ": " + linkEle.getAttribute("href"));
