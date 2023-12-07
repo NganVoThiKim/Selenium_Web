@@ -1,7 +1,8 @@
 package test_flows.global;
 
 import models.components.global.footer.*;
-import models.components.global.header.TopMenuComponent;
+//import models.components.global.header.TopMenuComponent;
+import models.components.global.header.MenuItemComponent;
 import models.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,17 +33,17 @@ public class FooterTestFlow {
         verifyMyAccountColumn(myAccountColumnComp);
         verifyFollowUsColumn(followUsColumnComp);
     }
-    public void verifyRandomMenuFooterComponent(){
-        // Randomly pickup main menu from TopMenuComponent
-        BasePage basePage = new BasePage(driver);
-        TopMenuComponent topMenuComp = basePage.topMenuComp();
-        List<TopMenuComponent.MainMenuComp> mainMenuCompList = topMenuComp.mainMenusComp();
-        Assert.assertFalse(mainMenuCompList.isEmpty(),"[ERR] There is no menu on top menu");
-        TopMenuComponent.MainMenuComp randomMainMenu = mainMenuCompList.get(new SecureRandom().nextInt(mainMenuCompList.size()));
-        String randomMenuHref = randomMainMenu.mainMenuLinkEle().getAttribute("href");
-        randomMainMenu.mainMenuLinkEle().click();
-
-        // Get sub-menu list (if any) then click on a random sub-menu / main menu (If has no sub-menu)
+//    public void verifyRandomMenuFooterComponent(){
+//        // Randomly pickup main menu from TopMenuComponent
+//        BasePage basePage = new BasePage(driver);
+//        TopMenuComponent topMenuComp = basePage.topMenuComp();
+//        List<TopMenuComponent.MainMenuComp> mainMenuCompList = topMenuComp.mainMenusComp();
+//        Assert.assertFalse(mainMenuCompList.isEmpty(),"[ERR] There is no menu on top menu");
+//        TopMenuComponent.MainMenuComp randomMainMenu = mainMenuCompList.get(new SecureRandom().nextInt(mainMenuCompList.size()));
+//        String randomMenuHref = randomMainMenu.mainMenuLinkEle().getAttribute("href");
+//        randomMainMenu.mainMenuLinkEle().click();
+//
+//        // Get sub-menu list (if any) then click on a random sub-menu / main menu (If has no sub-menu)
 //        List<TopMenuComponent.SubMenuComp> subMenuCompList = randomMainMenu.subMenusComp();
 //        if(subMenuCompList.isEmpty()){
 //            randomMainMenu.mainMenuLinkEle().click();
@@ -52,11 +53,41 @@ public class FooterTestFlow {
 //            randomMenuHref = randomSubMenu.getComponent().getAttribute("href");
 //            randomSubMenu.getComponent().click();
 //        }
+//
+//        // Make sure wait -> page is navigated correctly
+//        try {
+//            WebDriverWait wait = randomMainMenu.waitComponent();
+//            wait.until(ExpectedConditions.urlContains(randomMenuHref));
+//        } catch (Exception e){
+//            Assert.fail("[ERR] Target page is not matched");
+//        }
+//
+//        // Call common verify method
+//        verifyFooterComponent();
+//    }
+    public void verifyRandomMenuFooterComponent() {
+        // Randomly pickup main menu from TopMenuComponent
+        BasePage basePage = new BasePage(driver);
+        List<MenuItemComponent> menuItemComponents = basePage.menuItemComponents();
+        Assert.assertFalse(menuItemComponents.isEmpty(),"[ERR] There is no menu item on the top menu");
+        int randomMenuIndex = new SecureRandom().nextInt(menuItemComponents.size());
+        MenuItemComponent randomMenuItemComponent = menuItemComponents.get(randomMenuIndex);
+        String randomMenuItemHref = randomMenuItemComponent.menuItemLink().getAttribute("href");
 
+        // Get sub-menu list (if any) then click on a random sub-menu / main menu (If has no sub-menu)
+        List<WebElement> subMenuItemList = randomMenuItemComponent.subMenuItems();
+        if(subMenuItemList.isEmpty()){
+            randomMenuItemComponent.menuItemLink().click();
+        }else {
+            int randomSubMenuIndex = new SecureRandom().nextInt(subMenuItemList.size());
+            WebElement randomSubMenu = subMenuItemList.get(randomSubMenuIndex);
+            randomMenuItemHref = randomSubMenu.getAttribute("href");
+            randomSubMenu.click();
+        }
         // Make sure wait -> page is navigated correctly
         try {
-            WebDriverWait wait = randomMainMenu.waitComponent();
-            wait.until(ExpectedConditions.urlContains(randomMenuHref));
+            WebDriverWait wait = randomMenuItemComponent.waitComponent();
+            wait.until(ExpectedConditions.urlContains(randomMenuItemHref));
         } catch (Exception e){
             Assert.fail("[ERR] Target page is not matched");
         }

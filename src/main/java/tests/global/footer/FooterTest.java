@@ -5,10 +5,9 @@ import test_flows.global.FooterTestFlow;
 import tests.BaseTest;
 
 
-
 public class FooterTest extends BaseTest {
     @Test
-    public void testHomePageFooter(){
+    public void testHomePageFooter() {
         /*WebDriver driver = DriverFactory.getWebDriver();
         try {
             driver.get("https://demowebshop.tricentis.com/");
@@ -22,14 +21,15 @@ public class FooterTest extends BaseTest {
         }*/
 
         driver.get("https://demowebshop.tricentis.com/");
-        FooterTestFlow footerTestFlow= new FooterTestFlow(driver);
+        FooterTestFlow footerTestFlow = new FooterTestFlow(driver);
         //Assert.fail("I want to");
         footerTestFlow.verifyFooterComponent();
     }
+
     @Test
-    public void testMenuCategoryFooter(){
+    public void testRandomMenuPageFooter() {
         driver.get("https://demowebshop.tricentis.com/");
-        FooterTestFlow menuCategoryFooterTestFlow= new FooterTestFlow(driver);
+        FooterTestFlow menuCategoryFooterTestFlow = new FooterTestFlow(driver);
         menuCategoryFooterTestFlow.verifyRandomMenuFooterComponent();
     }
 }
