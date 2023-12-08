@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 
 public class BasePage extends Component {
-    private final WebDriver driver;
+    public final WebDriver driver;
 
     public BasePage(WebDriver driver) {
         super(driver, driver.findElement(By.tagName("html")));
@@ -22,7 +22,6 @@ public class BasePage extends Component {
 //    public TopMenuComponent topMenuComp(){
 //        return findComponent(TopMenuComponent.class);
 //    }
-
     public List<MenuItemComponent> menuItemComponents(){
         return findComponents(MenuItemComponent.class);
     }
