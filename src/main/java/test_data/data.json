@@ -1,0 +1,16 @@
+[
+  {
+    "processor": "25GHz",
+    "ram": "4GB",
+    "hdd": "256GB",
+    "os": "macOS",
+    "software": "photoshop"
+  },
+  {
+    "processor": "15GHz",
+    "ram": "2GB",
+    "hdd": "1TB",
+    "os": "androidOS",
+    "software": "IntelliJ"
+  }
+]
