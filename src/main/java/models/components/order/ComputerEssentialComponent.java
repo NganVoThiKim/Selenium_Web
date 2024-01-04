@@ -1,6 +1,5 @@
 package models.components.order;
 
-import models.components.ComponentCSSSelector;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,7 +36,7 @@ public abstract class ComputerEssentialComponent extends BaseItemComponent {
     }
 
     protected String selectCompOption(String type) {
-        String selectorStr = "//label[contains(text()," + type + ")]";
+        String selectorStr = "//label[contains(text()," + "\"" + type + "\"" + ")]";
         By optionSelector = By.xpath(selectorStr);
         WebElement optionEle = null;
         // If we don't find that element we throw an exception to tell that the option value is not existing on the page
@@ -48,6 +47,7 @@ public abstract class ComputerEssentialComponent extends BaseItemComponent {
         if (optionEle == null) {
             throw new RuntimeException("[ERR] The option " + type + " is not existing on the page");
         }
+        optionEle.click();
         return optionEle.getText().trim();
     }
 }

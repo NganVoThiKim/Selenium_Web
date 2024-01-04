@@ -1,6 +1,5 @@
 package models.pages;
 
-import models.components.order.CheapComputerComponent;
 import models.components.order.ComputerEssentialComponent;
 import org.openqa.selenium.WebDriver;
 
