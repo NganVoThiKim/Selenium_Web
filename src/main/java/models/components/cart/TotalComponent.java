@@ -11,11 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ComponentCSSSelector(".totals .cart-total")
+@ComponentCSSSelector(".cart-footer .totals")
 public class TotalComponent extends Component {
     private final static By priceTableSel = By.cssSelector("table tr");
     private final static By priceTypeSel = By.cssSelector(".cart-total .cart-total-left");
     private final static By priceValueSel = By.cssSelector(".cart-total .cart-total-right");
+    private final static By agreeTOSCheckboxSel = By.cssSelector("input[id='termsofservice']");
+    private final static By checkoutBtnSel = By.cssSelector("button[id='checkout']");
     public TotalComponent(WebDriver driver, WebElement component) {
         super(driver, component);
     }
@@ -38,5 +40,11 @@ public class TotalComponent extends Component {
             priceCategories.put(priceType, priceValue);
         }
         return priceCategories;
+    }
+    public void checkAgreeTOS(){
+        findElement(agreeTOSCheckboxSel).click();
+    }
+    public void clickCheckoutBtn(){
+        findElement(checkoutBtnSel).click();
     }
 }

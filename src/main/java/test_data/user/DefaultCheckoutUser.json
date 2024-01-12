@@ -1,0 +1,14 @@
+{
+  "firstName" : "Van Teo",
+  "lastName" : "Nguyen",
+  "email" : "teo@gmail.com",
+  "company" : "Company A",
+  "add1" : "Address 1",
+  "add2" : "Address 2",
+  "country" : "United States",
+  "state" : "Alabama",
+  "city" : "City",
+  "zipcode" : "1234",
+  "phoneNumber" : "1234567890",
+  "faxNumber" : "1122334455"
+}

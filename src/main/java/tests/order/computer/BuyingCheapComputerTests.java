@@ -3,7 +3,7 @@ package tests.order.computer;
 import models.components.order.CheapComputerComponent;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import test_data.ComputerData;
+import test_data.computer.ComputerData;
 import test_data.DataObjectBuilder;
 import test_flows.computer.OrderComputerFlow;
 import tests.BaseTest;
@@ -29,6 +29,8 @@ public class BuyingCheapComputerTests extends BaseTest {
         orderComputerFlow.buildCompSpec();
         orderComputerFlow.addItemToCart();
         orderComputerFlow.verifyShoppingCartPage();
+        orderComputerFlow.agreeTOSAndCheckout();
+        orderComputerFlow.inputBillingAddress();
     }
 
     @DataProvider(name = "computerData")
@@ -37,7 +39,7 @@ public class BuyingCheapComputerTests extends BaseTest {
 //        return new ComputerData[]{computerData, computerData};
 
         // Read data from CheapComputerDataList.json
-        String relativeDataFileLocation = "/src/main/java/test_data/CheapComputerDataList.json";
+        String relativeDataFileLocation = "/src/main/java/test_data/computer/CheapComputerDataList.json";
         return DataObjectBuilder.builderDataObjectFrom(relativeDataFileLocation, ComputerData[].class);
     }
 }
